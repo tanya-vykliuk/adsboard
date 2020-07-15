@@ -1,0 +1,10 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput name="name" id="name" [(ngModel)]="data.name">
+        <input matInput name="id" id="id" [(ngModel)]="data.id" class="display-none">
+      </mat-form-field>
+    </div> 
+    <button mat-raised-button color="primary" cdkFocusInitial>Submit</button>
+  </form>

@@ -1,0 +1,28 @@
+<h2><mat-icon class="title-icon">assignment</mat-icon>Manage advertisements</h2>
+<mat-accordion  *ngFor="let advertisement of advertisementlist">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="col-lg-4 col-xs-12">
+        {{advertisement.title}}
+      </mat-panel-title>
+      <mat-panel-description class="col-lg-4 col-xs-12">
+        Author: {{advertisement.name || advertisement.email}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Category: {{advertisement.category_name}}</p>
+    <p><strong>Short one:</strong><br/>{{advertisement.short_description}}
+      <br />
+      <strong>Full one:</strong><br />
+      {{advertisement.description}}</p>      
+        <button (click)="openDialog(advertisement.id)" style="float: right;" 
+        mat-raised-button color="basic" [routerLink]="approveLink">
+            <mat-icon class="delete-icon">cancel</mat-icon>
+            Reject
+        </button>   
+        <button (click)="approveAdvertisement(advertisement.id)" style="float: right;" 
+        mat-raised-button color="primary" [routerLink]="approveLink">
+          <mat-icon style="color: 3f51b5;">verified_user</mat-icon>
+          Approve
+      </button>  
+    </mat-expansion-panel>
+</mat-accordion>

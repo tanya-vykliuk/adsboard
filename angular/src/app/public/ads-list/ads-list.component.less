@@ -1,0 +1,115 @@
+.layout-row  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:stretch;
+}
+.adslist{
+    padding: 20px 0;
+}
+//single card
+.adslist .advertisement-card{
+   /* width: 19%; 
+    margin: 0 1% 1% 0;
+    box-sizing: border-box;*/
+    /*background-color: fade(#3f51b5, 20%);*/
+    margin: 15px 0;
+}
+//card heared
+.mat-card-header  .mat-card-header-text{
+    margin: 0px;    
+}
+.mat-card-title-group {
+    text-align: center;
+}
+mat-card-title-group.mat-card-title-group div{
+    width: 100%;
+}
+//card title in header
+.mat-card-title-group .mat-card-title{
+    height: 55px;    
+    width: 100%;    
+}
+//category in card
+.mat-card-subtitle{
+    text-align: left;
+    height: 35px; 
+    width: 100%;    
+}
+//short descrition 
+mat-card-content{
+    height: 50px;
+    overflow: hidden;
+}
+//create date
+.mat-card-footer span{
+    float: left;
+    margin: 10px 10px 0 15px;
+}
+//more details button
+.mat-card-footer button{
+    float: right;
+}
+.mat-card-footer button:hover{
+    /*background-color: fade(#3f51b5, 30%);    */
+}
+
+
+//
+.advertisement-card{
+    position: relative;
+    padding-bottom: 20px;
+    border-radius: 0 20px;
+    /*-webkit-border-radius:  0 20px 0 20px;
+    -moz-border-radius:  0 20px 0 20px;*/
+    div{
+        padding-left: 20px;
+        padding-right: 20px;
+        word-break: break-all; 
+    }
+
+    .adstitle{
+        //  background-color: mat-color($adsbord-theme-accent);
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-weight: bold;
+          text-align: center;         
+          font-size: 1em;
+         // border-top-right-radius: 20px;
+         //   border-bottom-left-radius: 20px;
+            border-radius: 0 20px;
+      }
+      .subtitle{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: left;
+      }
+      .adscontent{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        height: 80px;
+        overflow: hidden;
+        word-break: break-word; 
+      }
+      .footer {
+          position: absolute;
+          bottom: 0px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 0 20px;
+      }
+      .footer span{
+          float: left;
+          line-height: 36px;
+      }
+      .footer button{
+          float: right;
+      }
+      .footer::after{
+          content: '';
+          clear: both;
+          float: none;
+      }
+}

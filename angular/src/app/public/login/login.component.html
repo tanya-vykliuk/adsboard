@@ -1,0 +1,54 @@
+<div class="login_container">
+    <h2><mat-icon class="title-icon">person</mat-icon>Login</h2> <br />  
+    <form *ngIf="!isLoggedIn" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput class="form-control"            
+                placeholder="Ex. example@example.com" 
+                name="email" id="email" type="email" required>
+                <mat-error *ngIf="f.email.touched && f.email.errors?.required">
+                    Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="(f.email.touched && f.email.errors?.pattern) || error?.errorEmail">
+                    Email must be a valid email address
+                </mat-error>
+            </mat-form-field>
+        </div> 
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput  class="form-control"
+                name="password" id="password" [type]="hide ? 'password' : 'text'"
+                minlength="8" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" 
+                [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.required">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.minlength">
+                    Password is <strong>to short (minimum 8 symbols)!</strong>
+                </mat-error>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.pattern">
+                    Wrong pattern, password is has to contain at least 
+                    <strong>one lowercase, one upercase 
+                        symbol and one number character</strong>
+                </mat-error>
+            </mat-form-field>        
+        </div>
+        <button type="submit" mat-raised-button color="primary">Login</button>    
+        <p>If you have no account go to 
+            <button routerLink="/registration" mat-raised-button color="accent">
+                <mat-icon>person_add</mat-icon>
+                <span>Registration</span>
+            </button>
+        </p>
+    </form>
+
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logged in as {{ roles }}.
+      </div>
+</div>

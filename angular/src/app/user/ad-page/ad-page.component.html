@@ -1,0 +1,113 @@
+<h2>          
+    <span *ngIf="advertisement?.id"><mat-icon class="title-icon">assignment</mat-icon>
+        Edit advertisement</span>
+    <span *ngIf="!advertisement?.id"><mat-icon  class="title-icon">add</mat-icon>
+        New advertisement</span>
+</h2>
+<div class="row"> 
+    <button mat-raised-button color="accent" [routerLink]="backLink">
+        <mat-icon>arrow_back</mat-icon>Go to list
+    </button> 
+    <form  [formGroup]="advertisementForm" (ngSubmit)="onSubmit(advertisementForm.value)">
+        <div class="row">
+        <div class="col-md-8 mb-4">        
+          <div>
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category_id" id="category_id" name="category_id">
+                  <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{category.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+            <div>            
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Title</mat-label>
+                    <input formControlName="title" matInput class="form-control"           
+                    name="title" id="title" type="text" required #input maxlength="20">    
+                    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>            
+                    <mat-error *ngIf="(f.title.touched && f.title.errors?.required) ">
+                        Title is <strong>required</strong>                    
+                    </mat-error>                          
+                    <mat-error *ngIf="f.title.touched && f.title.errors?.maxlength">
+                      Title is <strong>to long (max 20 symbols)!</strong>
+                      </mat-error>    
+                </mat-form-field>
+            </div> 
+            <div>            
+              <mat-form-field  class="example-full-width">
+                  <mat-label>Short description</mat-label>
+                  <input formControlName="short_description" matInput class="form-control"
+                   placeholder="Ex. 100 Main St" name="short_description" id="short_description" type="text" 
+                   maxlength="75" #short_desc required>                   
+                  <mat-hint>Displays in advertisement list</mat-hint>            
+                  <mat-hint align="end">{{short_desc.value?.length || 0}}/75</mat-hint>            
+                  <mat-error *ngIf="(f.short_description.touched && f.short_description.errors?.required)">
+                      Short description is <strong>required</strong>
+                  </mat-error>   
+                  <mat-error *ngIf="f.short_description.touched && f.short_description.errors?.maxlength">
+                    Short description is <strong>to long (max 75 symbols)!</strong>
+                    </mat-error>                           
+              </mat-form-field>
+          </div>      
+            <div>            
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput class="form-control"
+                     placeholder="Ex. 100 Main St" name="description" id="description" type="text" 
+                     maxlength="500" #desc required>
+                    </textarea>     
+                    <mat-hint>Displays in full view of advertisement</mat-hint>               
+                    <mat-hint align="end">{{desc.value?.length || 0}}/500</mat-hint>            
+                    <mat-error *ngIf="(f.description.touched && f.description.errors?.required)">
+                        Description is <strong>required</strong>
+                    </mat-error> 
+                    <mat-error *ngIf="f.description.touched && f.description.errors?.maxlength">
+                      Description is <strong>to long (max 500 symbols)!</strong>
+                      </mat-error>                              
+                </mat-form-field>
+            </div>      
+        </div>
+        <div class="col-md-4 mb-4">
+            <div>
+                <section class="example-full-width">
+                    <mat-checkbox color="primary" formControlName="published" id="published" name="published">
+                        Published</mat-checkbox>                          
+                </section>
+            </div>
+            <div>  
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Status</mat-label>
+                    <input formControlName="status" matInput class="form-control"           
+                    name="status" id="status" type="text" disabled> 
+                </mat-form-field> 
+                   <mat-icon color="primary"  matTooltip="Waiting approving by Manager" 
+                   *ngIf="f.status === 'created'" >access_time</mat-icon>
+                    <mat-icon color="primary"  matTooltip="Approved" 
+                    *ngIf="f.status === 'approved'" >verified_user</mat-icon>
+                    <mat-icon color="primary"  matTooltip="Rejected" 
+                    *ngIf="f.status === 'rejected'" >cancel</mat-icon>                 
+                     
+            </div>   
+            <div>   
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Create date</mat-label>
+                    <input formControlName="create_date" matInput class="form-control"           
+                    name="create_date" id="create_date" type="text"> 
+                </mat-form-field>
+            </div>  
+            <div>   
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Last modify date</mat-label>
+                    <input formControlName="last_modify_date" matInput class="form-control"           
+                    name="last_modify_date" id="last_modify_date" type="text"> 
+                </mat-form-field>
+            </div>  
+            <input formControlName="id" matInput class="form-control display-none" name="id" id="id" readonly>  
+            <input formControlName="author_id" matInput class="form-control display-none" name="author_id" id="author_id" readonly>  
+        </div>
+    </div>
+        <button class="pull-right" type="submit" mat-raised-button color="primary">Save</button>
+    </form>    
+</div>

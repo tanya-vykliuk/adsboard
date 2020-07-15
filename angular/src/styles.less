@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",*/
+
+
+@import "~app/styles/bootstrap-partial.css";
+//@import "~app/styles/bootstrap.css";
+@import "~app/styles/bootstrap-responsive.css";
+
+
+// import new color theme custom
+//@import "~app/styles/adsboard-theme.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@regular-button-bg-color: #2196f3;
+@complement-button-bg-color: #bbdefb;
+@delete-color: #ba000d;
+@color-light-brown:#727d77;
+
+.regular-button{
+  background-color: @regular-button-bg-color;
+}
+.complement-button{
+  background-color:@complement-button-bg-color;
+}
+
+button{
+  margin: 15px 0;
+}
+.delete-icon{
+    color:@delete-color;
+}
+body{
+  background-color: #e3e0cf;
+}
+
+.mat-toolbar h1{
+ // font-size: 45px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.color-light-brown{
+  color: @color-light-brown;
+}
+
+@color-primary: #c5d5cb;
+
+div.color-primary,
+button.color-primary{
+  background-color: @color-primary;
+}
+div.color-accent,
+button.color-accent{
+  background-color: #9fa8a3;
+}
+span.color-accent{
+  color: #9fa8a3;
+}
+.color-basic{
+  background-color: #ffffff;
+}
+.color-foreground{
+  background-color: #e3e0cf;
+}
+
+
+.mat-sort-header-container {
+  align-items: center;
+}
+.sortTable{
+  width: 100%;
+  thead tr{
+   // background: #bbdefb;
+   background-color: @color-primary;
+    th{
+      padding: 0 10px;
+      text-align: center;
+    }
+  }
+  tbody{
+    tr:nth-child(even) {background: #ffffff}
+    tr:nth-child(odd) {background: #fdfdfd}
+    tr td{
+      padding: 5px 10px;
+    }
+    mat-icon{
+      cursor: pointer;
+      //color: @primary;
+    }
+  }
+  
+}
+
+textarea:focus, input:focus, h1 span:focus{
+  outline: none;
+}

@@ -1,0 +1,15 @@
+<div class='adslist md-padding layout-row' layout="row" layout-wrap>
+    <div class=" mdc-card__media--square col-md-3"  *ngFor="let ad of adslist ">
+        <div class="advertisement-card  color-basic">
+            <div class="adstitle color-primary">{{ ad.title }}</div>
+            <div class="subtitle"><span class="color-accent">{{ad.category_name }}</span></div>     
+            <div class="adscontent">{{ ad.short_description }}</div>    
+            <div class="footer color-accent">
+                <span>{{ad.create_date | date }}</span>
+                <button mat-button (click)="openDialog(ad.id)" matTooltip="Open full advertisement">
+                    <mat-icon color="accent" >more_horiz</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div> 
+</div>

@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">  
+      <div class="container m-0 p-0 overflow-hidden">
+        <h1 class="color-light-brown">
+          <span  routerLink="/">Advertisements Dashboard</span>
+          <span flex></span>
+        <button class='float-right' *ngIf="!isLoggedIn" routerLink="/login" mat-button aria-label="">
+            <mat-icon>person</mat-icon>
+            <span>Login</span>
+        </button> 
+          <!-- for logged user-->
+          <button  class='float-right' align="end" *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu">
+              <span>Hi {{username || email}}</span>
+              <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button  *ngIf="showAdminItems" routerLink="admin/manage-users" mat-menu-item>
+                <mat-icon>people</mat-icon>
+                <span>Manage users</span>
+              </button>
+              <button  *ngIf="showAdminItems" routerLink="admin/manage-categories" mat-menu-item>
+                <mat-icon>assessment</mat-icon>
+                <span>Manage categories</span>
+              </button>          
+              <button *ngIf="showManagerItems" routerLink="manager/manage-ads"  mat-menu-item>
+                <mat-icon *ngIf="waitingApproval > 0" [matBadge]="waitingApproval" matBadgeColor="accent">assignment</mat-icon>
+                <mat-icon *ngIf="waitingApproval <= 0" >assignment</mat-icon>
+                <span>Manage advertisements</span>
+              </button>
+            <button routerLink="/account" mat-menu-item>
+              <mat-icon>home</mat-icon>
+              <span>My account</span>
+            </button>
+            <button *ngIf="showUserItems" routerLink="/my-ads-list" mat-menu-item>
+                <mat-icon>assignment</mat-icon>
+                <span>My ads</span>
+              </button>
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              <span (click)="logout()">Logout</span>
+            </button>
+          </mat-menu> 
+        </h1>        
+      </div>
+</mat-toolbar>

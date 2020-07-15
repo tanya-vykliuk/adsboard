@@ -1,0 +1,54 @@
+<h2><mat-icon class="title-icon">assignment</mat-icon>My advertisements
+    <button mat-raised-button color="primary" class="float-right" routerLink="/ad-page/new" >
+        <mat-icon>add</mat-icon>Add advertisement
+    </button>
+</h2>
+
+<table class="sortTable" matSort (matSortChange)="sortData($event)">
+  <thead>
+    <tr color="primary">
+      <th mat-sort-header="id">Id</th>
+      <th class="hidden-xs" mat-sort-header="status">Status</th>
+      <th class="visible-xs text-center" mat-sort-header="statusSmall"></th>
+      <th mat-sort-header="title">Title</th>
+      <th class="hidden-xs" mat-sort-header="category_name">Category</th>
+      <th class="visible-lg" mat-sort-header="short_description">Short Description</th>
+      <th class="visible-md" mat-sort-header="create_date">Created</th>
+      <th class="visible-md" mat-sort-header="last_modify_date">Last modify</th>
+      <th class="hidden-xs text-center" mat-sort-header="published">Published</th>   
+      <th class="visible-xs text-center" mat-sort-header="publishedSmall"></th>   
+      <th class="text-center"></th>
+      <th class="text-center"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let advertisement of sortedData | keyvalue" id="advrow_{{advertisement.key}}">
+      <td>{{advertisement.value.id}}</td>    
+      <td class="text-center">
+        <mat-icon  matTooltip="Waiting approving by Manager" *ngIf="advertisement.value.status === 'created'"  color="primary" >access_time</mat-icon>
+        <mat-icon  matTooltip="Approved" *ngIf="advertisement.value.status === 'approved'"  color="primary" >verified_user</mat-icon>
+        <mat-icon  matTooltip="Rejected" *ngIf="advertisement.value.status === 'rejected'"  color="primary" >cancel</mat-icon>
+      </td>  
+      <td>{{advertisement.value.title}}</td>
+      <td class="hidden-xs">{{advertisement.value.category_name}}</td>
+      <td class="visible-lg">{{advertisement.value.short_description}}</td>
+      <td class="visible-md">{{advertisement.value.create_date | date}}</td>
+      <td class="visible-md">{{advertisement.value.last_modify_date | date}}</td>
+      <td class="text-center">
+            <mat-checkbox color="primary"
+              (click)="publishAdvertisement(advertisement.value.id, !advertisement.value.published, advertisement.key)" 
+              [checked]="advertisement.value.published">
+            </mat-checkbox> 
+      </td>      
+      <td class="text-center">        
+            <mat-icon routerLink="/ad-page/{{advertisement.value.id}}" matTooltip="Edit advertisement" 
+            color="primary">edit</mat-icon>   
+      </td>
+      <td class="text-center">
+            <mat-icon (click)="deleteAdvertisement(advertisement.value.id, advertisement.key)" 
+            matTooltip="Delete advertisement" class="delete-icon">delete_forever</mat-icon>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <!--<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->

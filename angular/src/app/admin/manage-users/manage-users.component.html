@@ -1,0 +1,39 @@
+<h2><mat-icon class="title-icon">people</mat-icon>Manage users
+ <!--   <button mat-raised-button color="primary" style="float: right;" routerLink="/ad-page/new" >
+        <mat-icon>add</mat-icon>Add user
+    </button>
+-->
+</h2>
+
+<table class="sortTable" matSort (matSortChange)="sortData($event)" >
+    <thead>
+      <tr>
+        <th mat-sort-header="id">Id</th>
+        <th mat-sort-header="email">Email</th>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="status">Status</th>
+        <th mat-sort-header="role_name">Role</th>
+        <th mat-sort-header="registration_date">Registered</th>
+        <th mat-sort-header="last_visit_date">Last visit</th>
+      <!--  <th mat-sort-header="edit"></th>
+        <th mat-sort-header="delete"></th> -->
+      </tr>
+    </thead> 
+    <tbody>
+      <tr *ngFor="let user of sortedData | keyvalue" id="userrow_{{user.key}}">
+        <td>{{user.value.id}}</td>      
+        <td>{{user.value.email}}</td>
+        <td>{{user.value.name}}</td>
+        <td>{{user.value.status}}</td>
+        <td>{{user.value.role_name}}</td>
+        <td>{{user.value.registration_date | date}}</td>
+        <td>{{user.value.last_visit_date | date}}</td>
+      <!--  <td class="text-center">
+              <mat-icon color="primary" (click)="openDialog(category.value.id)" matTooltip="Edit category">edit</mat-icon>    
+        </td>
+        <td class="text-center">
+              <mat-icon color="accent" (click)="deleteCategory(category.value.id, category.key)" matTooltip="Delete category">delete_forever</mat-icon>
+        </td> -->
+      </tr>
+    </tbody>
+    </table>

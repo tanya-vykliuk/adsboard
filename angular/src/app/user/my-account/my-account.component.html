@@ -1,0 +1,9 @@
+<h2><mat-icon class="title-icon">home</mat-icon>My account</h2>
+<div *ngIf="user">
+<p>Email: {{user.email}}</p>
+<p>Username: {{user.name}}</p>
+<p>Registration date: {{user.registration_date | date}}</p>
+<p>Last visit date: {{user.last_visit_date | date}}</p>
+<p>Status: {{user.status}}</p>
+<p>Role: {{user.role_name}}</p>
+</div>

@@ -1,0 +1,114 @@
+@import '../../../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+$light-mint: (
+    50 : #f8faf9,
+    100 : #eef2ef,
+    200 : #e2eae5,
+    300 : #d6e2db,
+    400 : #cedbd3,
+    500 : #c5d5cb,
+    600 : #bfd0c6,
+    700 : #b8cabe,
+    800 : #b0c4b8,
+    900 : #a3baac,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #fefffe,
+    A700 : #e5ffee,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$light-brown: (
+    50 : #f3f5f4,
+    100 : #e2e5e3,
+    200 : #cfd4d1,
+    300 : #bcc2bf,
+    400 : #adb5b1,
+    500 : #9fa8a3,
+    600 : #97a09b,
+    700 : #8d9791,
+    800 : #838d88,
+    900 : #727d77,
+    A100 : #feffff,
+    A200 : #cffbe3,
+    A400 : #98ffc7,
+    A700 : #7fffb9,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$light-nude: (
+    50 : #fcfbf9,
+    100 : #f7f6f1,
+    200 : #f1f0e7,
+    300 : #ebe9dd,
+    400 : #e7e5d6,
+    500 : #e3e0cf,
+    600 : #e0dcca,
+    700 : #dcd8c3,
+    800 : #d8d3bd,
+    900 : #d0cbb2,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$adsbord-theme-primary: mat-palette($light-mint);
+$adsbord-theme-accent: mat-palette($light-brown, A200, A100, A400);
+$adsbord-theme-warn: mat-palette($mat-red);
+$adsbord-theme-foreground: mat-palette($light-nude);
+
+
+$adsboard-theme: mat-light-theme($adsbord-theme-primary, $adsbord-theme-accent, $adsbord-theme-warn);
+
+@include angular-material-theme($adsboard-theme);
+//@include adsboard-theme($adsboard-theme);

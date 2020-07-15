@@ -1,0 +1,27 @@
+<h2><mat-icon class="title-icon">assessment</mat-icon>Manage advertisement categories
+    <button mat-raised-button color="primary" style="float: right;"  (click)="openDialog(0)" >
+        <mat-icon>add</mat-icon>Add category
+    </button>
+</h2>  
+<table class="sortTable" matSort (matSortChange)="sortData($event)" >
+  <thead>
+    <tr>
+      <th mat-sort-header="id">Id</th>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="edit"></th>
+      <th mat-sort-header="delete"></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let category of sortedData | keyvalue" id="catrow_{{category.key}}">
+      <td>{{category.value.id}}</td>      
+      <td>{{category.value.name}}</td>
+      <td class="text-center">
+            <mat-icon color="primary" (click)="openDialog(category.value.id)" matTooltip="Edit category">edit</mat-icon>    
+      </td>
+      <td class="text-center">
+            <mat-icon color="warn" (click)="deleteCategory(category.value.id, category.key)" matTooltip="Delete category">delete_forever</mat-icon>
+      </td>
+    </tr>
+  </tbody>
+  </table>

@@ -1,0 +1,69 @@
+<div class="registration_container">
+    <h2><mat-icon class="title-icon">person_add</mat-icon>Registration</h2> <br />
+   <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <div>            
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput class="form-control"            
+                placeholder="Ex. example@example.com" 
+                name="email" id="email" type="email" required>                
+                <mat-error *ngIf="(f.email.touched && f.email.errors?.required) || error?.errorUser">
+                    Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="(f.email.touched && f.email.errors?.pattern) || (error?.errorEmail)">
+                    Email must be a valid email address like pat@example.com
+                </mat-error>                
+            </mat-form-field>
+        </div> 
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput  class="form-control"
+                name="password" id="password" [type]="hide ? 'password' : 'text'"
+                required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" 
+                [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.required">
+                    Password is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.minlength">
+                    Password is <strong>to short (minimum 8 symbols)!</strong>
+                </mat-error>
+                <mat-error *ngIf="f.password.touched && f.password.errors?.pattern">
+                    Wrong pattern, password is has to contain at least 
+                    <strong>one lowercase, one upercase 
+                        symbol and one number character</strong>
+                </mat-error>
+            </mat-form-field>        
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input formControlName="confirmpassword" matInput  class="form-control"
+                name="confirmpassword" id="confirmpassword" [type]="hide ? 'password' : 'text'"
+                [pattern]="passwordPattern"  minlength="8" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" 
+                [attr.aria-label]="'Show password'" [attr.aria-pressed]="show">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.confirmpassword.touched && f.confirmpassword.errors?.required">
+                    Confirm password is <strong>required</strong>
+                </mat-error>  
+                <mat-error *ngIf="f.confirmpassword.touched && f.confirmpassword.errors?.mustMatch">
+                    <strong>Passwords not match</strong>
+                </mat-error>                
+            </mat-form-field>        
+        </div> 
+        
+        <button type="submit"  mat-raised-button color="primary">Register</button>
+        <p>If you already registered go to 
+            <button routerLink="/login" mat-raised-button color="accent">
+                <mat-icon>person</mat-icon>
+                <span>Login</span>
+            </button>
+        </p>
+    </form>
+
+</div>
